@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f0f4ff;
+  --color-brand-100: #dde5ff;
+  --color-brand-200: #c3cffe;
+  --color-brand-300: #9baff9;
+  --color-brand-400: #7284f4;
+  --color-brand-500: #5261ea;
+  --color-brand-600: #3d46d9;
+  --color-brand-700: #3237bc;
+  --color-brand-800: #2c3098;
+  --color-brand-900: #292e78;
+  --color-brand-950: #1b1d49;
+
+  --font-family-sans: "Inter", system-ui, sans-serif;
+  --font-family-mono: "Fira Code", monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --bg-dark: #0f0f1a;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #1e1e38;
+  --border: #2a2a4a;
+  --text-primary: #e0e0ff;
+  --text-secondary: #8888aa;
+  --accent: #5261ea;
+  --accent-glow: rgba(82, 97, 234, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* React Flow canvas background */
+.react-flow__background {
+  background-color: var(--bg-dark) !important;
+}
+
+/* Animated background grid */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(82,97,234,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82,97,234,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Chat bubble animations */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.bubble-user    { animation: slideInRight 0.3s ease-out; }
+.bubble-ai      { animation: slideInLeft  0.3s ease-out; }
+
+/* Skill node status colours */
+.node-locked      { border-color: #3a3a5a !important; }
+.node-unlocked    { border-color: #5261ea !important; box-shadow: 0 0 12px rgba(82,97,234,0.4); }
+.node-in-progress { border-color: #f59e0b !important; box-shadow: 0 0 12px rgba(245,158,11,0.4); }
+.node-completed   { border-color: #10b981 !important; box-shadow: 0 0 12px rgba(16,185,129,0.4); }
+.node-milestone   { border-width: 2px !important; }
+
+/* Typing indicator */
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 1; }
+}
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* Glass card */
+.glass {
+  background: rgba(26,26,46,0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+/* Glow button */
+.btn-primary {
+  background-color: var(--color-brand-500, #5261ea);
+  color: white;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  box-shadow: 0 0 20px rgba(82,97,234,0.3);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--color-brand-600, #3d46d9);
+  box-shadow: 0 0 30px rgba(82,97,234,0.5);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-brand-500, #5261ea);
+  color: var(--color-brand-400, #7284f4);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: var(--color-brand-950, #1b1d49);
+}
+
